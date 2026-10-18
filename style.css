@@ -68,7 +68,7 @@ footer{padding:2rem 1.2rem;text-align:center;font-size:.9rem}
 .badge{display:flex;align-items:center;justify-content:center;width:176px;height:44px;padding:0 .6rem;text-align:center;font-size:.8rem;font-weight:600;line-height:1.1;color:#fff;background:var(--accent);border:2px outset #d98aa8}
 .badge.b2{background:#5c4033;border-color:#9a7a68}
 .badge.b3{background:#6b5bb0;border-color:#a99be0}
-@media(max-width:600px){.badges{flex-direction:column;align-items:center}}
+@media(max-width:600px){.badges{flex-direction:column;align-items:center}.badge,.badge.b2,.badge.b3{transform:none;width:min(220px,100%)}}
 
 /* ---- v4 ---- */
 .row{display:flex;flex-wrap:wrap;gap:.5rem}
