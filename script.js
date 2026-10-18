@@ -26,6 +26,14 @@ $("soundBtn").addEventListener("click", (e) => {
   chime(880);
 });
 
+/* ---------- Toast helper ---------- */
+let toastTimer;
+function toast(msg) {
+  const t = $("toast");
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2500);
+}
+
 /* ---------- Day / night toggle ---------- */
 $("moodBtn").addEventListener("click", (e) => {
   const night = document.body.dataset.mood !== "night";
@@ -63,7 +71,8 @@ addEventListener("pointermove", (e) => {
 
 /* ---------- Lullaby Lab (music box) ---------- */
 const NOTES = [523.25, 587.33, 659.25, 783.99, 880]; // C D E G A
-const MELODY = [0, 1, 2, 1, 0, 3, 2, 1, 0, 2, 4, 3, 2, 1, 0];
+const MELODY = [0, 1, 2, 1, 0, 3, 2, 1, 0, 2, 4, 3, 2, 1, 0]; // YOUR LULLABY: edit these numbers (0-4)!
+const RAIN = [4, 3, 2, 3, 4, 3, 1, 2, 0, 1, 2, 1, 0];          // second tune: edit me too
 const keys = [];
 NOTES.forEach((f, i) => {
   const b = document.createElement("button");
@@ -77,13 +86,14 @@ function flash(i) {
   setTimeout(() => keys[i].classList.remove("lit"), 300);
 }
 let playing = false;
-function playLullaby(step = 450) {
+function playLullaby(step = 450, mel = MELODY) {
   if (playing) return;
   playing = true;
-  MELODY.forEach((n, i) => setTimeout(() => { tone(NOTES[n], 0, 1.4); flash(n); }, i * step));
-  setTimeout(() => (playing = false), MELODY.length * step + 300);
+  mel.forEach((n, i) => setTimeout(() => { tone(NOTES[n], 0, 1.4); flash(n); }, i * step));
+  setTimeout(() => (playing = false), mel.length * step + 300);
 }
 $("playBtn").addEventListener("click", () => playLullaby());
+$("playBtn2").addEventListener("click", () => playLullaby(380, RAIN));
 
 /* ---------- Nightlight lamps ---------- */
 document.querySelectorAll(".lamp").forEach((l, i) =>
@@ -101,7 +111,18 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".scene").forEach((s) => io.observe(s));
 
-/* ---------- Hidden Easter egg: tap the pom-pom 3 times ---------- */
+/* ---------- Wobbles the nervous ghost ---------- */
+const WOB = ["Is it dark yet?", "I heard something. It was me.", "Can we leave one lamp on? Or all of them?", "Boo! Oh no, I scared myself.", "Pip made me a lullaby. I cried a little.", "I’m not scared. I’m just very alert.", "Ghosts don’t get nightmares. We get… concerns."];
+let wi = 0;
+$("wobbles").addEventListener("click", (e) => {
+  wi = (wi + 1) % WOB.length;
+  $("wobLine").textContent = WOB[wi];
+  const b = e.currentTarget;
+  b.classList.remove("shake"); void b.offsetWidth; b.classList.add("shake");
+  tone(NOTES[wi % 5], 0, 0.7);
+});
+
+/* ---------- Hidden Easter egg #1: tap the pom-pom 3 times ---------- */
 let taps = 0, tapTimer;
 $("pom").addEventListener("click", (e) => {
   e.stopPropagation();
@@ -129,6 +150,18 @@ function starBurst(x, y) {
     setTimeout(() => s.remove(), 1000);
   }
 }
+
+/* ---------- Hidden Easter egg #2: tap the moon ---------- */
+$("moonBtn").addEventListener("click", (e) => {
+  e.stopPropagation();
+  [4, 3, 2, 1, 0].forEach((n, i) => tone(NOTES[n], i * 0.18, 1));
+  toast("Shh… you’ll wake the moon.");
+  if (reduce) return;
+  const s = document.createElement("span");
+  s.className = "shoot"; s.textContent = "★";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 1300);
+});
 
 /* ---------- Click on Pip = giggle chime ---------- */
 $("pip").addEventListener("click", () => chime(540 + Math.random() * 400));

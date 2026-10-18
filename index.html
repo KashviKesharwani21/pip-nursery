@@ -19,12 +19,13 @@
     </div>
   </header>
 
-  <div class="marquee" aria-hidden="true"><div class="track"><span>✦ Welcome to Pip’s Midnight Nursery ✦ Best viewed on any screen ✦ Please keep your giggles down ✦ Dreams delivered nightly ✦ </span><span>✦ Welcome to Pip’s Midnight Nursery ✦ Best viewed on any screen ✦ Please keep your giggles down ✦ Dreams delivered nightly ✦ </span></div></div>
+  <div class="marquee" aria-hidden="true"><div class="track"><span>✦ dreams delivered nightly ✦ please giggle quietly ✦ best viewed on any screen ✦ no ghosts were harmed (Wobbles was just startled) ✦ </span><span>✦ dreams delivered nightly ✦ please giggle quietly ✦ best viewed on any screen ✦ no ghosts were harmed (Wobbles was just startled) ✦ </span></div></div>
 
   <main>
     <section class="hero">
       <div class="pip" id="pip" role="img" aria-label="Pip, a sleepy skull baby in a starry nightcap, holding a lantern and a music box">
         <img src="assets/pip.jpg" alt="" width="682" height="1024">
+        <button type="button" class="moonbtn" id="moonBtn" aria-label="The moon"></button>
         <button type="button" class="pom" id="pom" aria-label="Pip’s pom-pom"></button>
         <span class="zzz" aria-hidden="true">z z z</span>
         <span class="eye" id="eyeL"><i></i></span>
@@ -33,23 +34,24 @@
       <div class="intro">
         <h1>Hi, I’m Pip.</h1>
         <p class="tag">I build the dreams you fall asleep inside.</p>
-        <p>Junior Dream Engineer at the Midnight Nursery. I’m curious, sleepy, a little clumsy, and I giggle at everything. Move your mouse, I’m watching.</p>
+        <p>I’m a Junior Dream Engineer at the Midnight Nursery. I can’t sit still, I can’t whisper, and I cannot stand a quiet room. So I make sounds, lights and stories until the whole street is snoring. (Yes, I’m a skull. Yes, I’m a baby. It’s fine.) Move your mouse. I’m watching.</p>
         <p class="counter">Dreams delivered: <span id="odo" class="odo" aria-label="visitor counter"></span></p>
       </div>
     </section>
 
     <section id="work">
-      <h2>What I make</h2>
+      <h2>Things I made (mostly on purpose)</h2>
       <div class="grid">
         <article>
           <h3>The Lullaby Lab</h3>
-          <p>A music box I wound up myself. Tap the stars to play, or let me play a lullaby.</p>
+          <p>My music box has five notes and zero rules. Tap the stars, or let me play one for you.</p>
           <div class="keys" id="keys"></div>
-          <button type="button" id="playBtn">Play Pip’s lullaby</button>
+          <button type="button" id="playBtn">Pip’s lullaby</button>
+          <button type="button" id="playBtn2">Rainy-night tune</button>
         </article>
         <article>
           <h3>Nightlight Collection</h3>
-          <p>Tap a lamp to light it. Try them all.</p>
+          <p>Wobbles tested every one of these. Tap a lamp to light it.</p>
           <div class="lamps">
             <button type="button" class="lamp" aria-pressed="false">🌙<span>Crescent lamp</span></button>
             <button type="button" class="lamp" aria-pressed="false">⭐<span>Star jar</span></button>
@@ -58,7 +60,7 @@
         </article>
         <article>
           <h3>Pip’s Growth Chart</h3>
-          <p>How tall my skills have grown on the nursery wall.</p>
+          <p>My skills, measured against the nursery wall.</p>
           <ul class="measure">
             <li style="--w:90%"><b>Lullabies</b></li>
             <li style="--w:75%"><b>Nightlights</b></li>
@@ -71,11 +73,19 @@
 
     <section id="story">
       <h2>How I got here</h2>
-      <div class="scene"><h3>The quiet</h3><p>Before the Midnight Nursery, there was one quiet hill and one very small skull baby who hated silence. Pip couldn’t sleep. Neither could the little ghosts down the lane.</p></div>
-      <div class="scene"><h3>The first lullaby</h3><p>In an attic, Pip found a dusty music box with one key and five notes. Pip wound it up. Every little ghost on the street yawned at the same time.</p></div>
-      <div class="scene"><h3>The job</h3><p>The Midnight Nursery hired Pip on the spot. Now Pip builds dreams after dark: lullabies, nightlights, and bedtime tales. Still a little clumsy. Still giggling.</p></div>
+      <div class="scene"><h3>The quiet</h3><p>The nursery used to be so quiet. Ugh. Pip lay awake listening to nothing, and nothing is LOUD. Down the lane, Wobbles the ghost couldn’t sleep either, because Wobbles is scared of the dark. Yes, a ghost. We don’t talk about it.</p></div>
+      <div class="scene"><h3>The first lullaby</h3><p>In an attic, Pip found a dusty music box with one key and five notes. Pip wound it up. Plink, plonk, plink. Wobbles stopped shaking. Every little ghost on the street yawned at once. Pip did a victory wiggle and fell off the cloud.</p></div>
+      <div class="scene"><h3>The job</h3><p>The Midnight Nursery hired Pip that very night. Now Pip builds dreams: lullabies, nightlights, bedtime tales. Wobbles tests everything and screams at the scary ones, which is very helpful. Pip is still a little clumsy. Pip is still giggling.</p></div>
+    </section>
+
+    <section id="neighbors">
+      <h2>My neighbor Wobbles</h2>
+      <p>Official nightlight tester. Poke Wobbles. Gently.</p>
+      <button type="button" id="wobbles" class="wobbles">👻<span id="wobLine">Is it dark yet?</span></button>
     </section>
   </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <footer>
     <div class="badges"><span class="badge">Made with ♡ at haX.baby</span><span class="badge b2">Mute button included</span><span class="badge b3">Best viewed on any screen</span></div>

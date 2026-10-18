@@ -34,8 +34,8 @@ footer{padding:2rem 1.2rem;text-align:center;font-size:.9rem}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}.spark{display:none}}
 
 /* ---- v2 ---- */
-.keys{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
-.key{width:48px;height:48px;padding:0;font-size:1.4rem;background:var(--card);color:var(--accent);border:2px solid var(--accent);transition:transform .15s}
+.keys{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin:.8rem 0}
+.key{width:100%;max-width:52px;aspect-ratio:1;padding:0;justify-self:center;font-size:1.4rem;background:var(--card);color:var(--accent);border:2px solid var(--accent);transition:transform .15s}
 .key.lit{background:var(--glow);color:#5c4033;transform:scale(1.15)}
 .lamps{display:flex;gap:.6rem;flex-wrap:wrap}
 .lamp{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-size:2rem;background:var(--card);color:var(--ink);border:2px solid var(--accent);border-radius:18px;padding:.6rem .8rem}
@@ -57,9 +57,9 @@ footer{padding:2rem 1.2rem;text-align:center;font-size:.9rem}
 @media(prefers-reduced-motion:reduce){.scene{opacity:1;transform:none}.star,.zzz{animation:none}}
 
 /* ---- v3 retro ---- */
-.marquee{overflow:hidden;background:var(--accent);color:#fff;font-weight:600;white-space:nowrap}
-.marquee .track{display:inline-flex;animation:scroll 22s linear infinite}
-.marquee span{padding:.3rem 0}
+.marquee{overflow:hidden;white-space:nowrap;color:var(--accent);background:var(--card);border-top:2px dashed var(--accent);border-bottom:2px dashed var(--accent);font-size:.85rem}
+.marquee .track{display:inline-flex;animation:scroll 40s linear infinite}
+.marquee span{padding:.35rem 0}
 @keyframes scroll{to{transform:translateX(-50%)}}
 .counter{font-weight:600}
 .odo{display:inline-flex;gap:3px;vertical-align:middle}
@@ -68,5 +68,27 @@ footer{padding:2rem 1.2rem;text-align:center;font-size:.9rem}
 .badge{padding:.35rem .7rem;font-size:.8rem;font-weight:600;color:#fff;background:var(--accent);border:2px outset #d98aa8;transform:rotate(-2deg)}
 .badge.b2{background:#5c4033;border-color:#9a7a68;transform:rotate(1.5deg)}
 .badge.b3{background:#6b5bb0;border-color:#a99be0;transform:rotate(-1deg)}
-@media(max-width:600px){.badges{flex-direction:column;align-items:center}.badge{transform:none}.marquee .track{animation-duration:14s}}
+@media(max-width:600px){.badges{flex-direction:column;align-items:center}.badge{transform:none}.marquee .track{animation-duration:26s}}
 @media(prefers-reduced-motion:reduce){.marquee .track{animation:none}}
+
+/* ---- v4 ---- */
+.row{display:flex;flex-wrap:wrap;gap:.5rem}
+.gn{margin-top:.4rem}
+.gn[aria-pressed="true"]{background:var(--glow);color:#5c4033}
+.moon{position:absolute;left:83%;top:16.6%;width:18%;aspect-ratio:1;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent;padding:0;cursor:pointer}
+.bubble{position:absolute;right:4%;top:28%;max-width:58%;padding:.5rem .7rem;font-size:.9rem;line-height:1.3;color:#5c4033;background:#fffdf8;border-radius:14px;box-shadow:0 2px 6px rgba(0,0,0,.2);opacity:0;transition:opacity .3s;pointer-events:none}
+.bubble.show{opacity:1}
+
+/* ---- v4: Wobbles, moon egg, toast ---- */
+#playBtn2{margin-left:.4rem;background:#6b5bb0}
+article > button + button{margin-top:.4rem}
+.moonbtn{position:absolute;left:83%;top:16.6%;width:18%;aspect-ratio:1;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent;padding:0;cursor:pointer}
+.wobbles{display:flex;align-items:center;gap:.8rem;font-size:3rem;color:var(--ink);background:var(--card);border:2px dashed var(--accent);border-radius:24px;padding:.6rem 1rem}
+.wobbles span{font:400 1.1rem var(--round);text-align:left}
+.wobbles.shake{animation:wob .4s}
+@keyframes wob{25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+.toast{position:fixed;left:50%;bottom:1.2rem;transform:translate(-50%,20px);background:var(--accent);color:#fff;padding:.6rem 1rem;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:20;max-width:90vw}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.shoot{position:fixed;top:12%;left:-10%;z-index:9;font-size:28px;color:var(--glow);pointer-events:none;animation:shoot 1.2s ease-in forwards}
+@keyframes shoot{to{transform:translate(120vw,30vh) rotate(25deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.shoot,.wobbles.shake{animation:none}}
