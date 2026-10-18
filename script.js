@@ -81,19 +81,36 @@ NOTES.forEach((f, i) => {
   b.addEventListener("click", () => { tone(f); flash(i); });
   $("keys").appendChild(b); keys.push(b);
 });
+const box = $("mbox"), wrap = $("mboxWrap");
+function floatNote() {
+  if (reduce || !wrap) return;
+  const n = document.createElement("span");
+  n.className = "fnote";
+  n.textContent = ["♪", "♫", "✦"][Math.floor(Math.random() * 3)];
+  n.style.left = 20 + Math.random() * 60 + "%";
+  wrap.appendChild(n);
+  setTimeout(() => n.remove(), 1500);
+}
 function flash(i) {
   keys[i].classList.add("lit");
   setTimeout(() => keys[i].classList.remove("lit"), 300);
+  floatNote();
+  if (box && !reduce) { box.classList.remove("bump"); void box.offsetWidth; box.classList.add("bump"); }
 }
-let playing = false;
+let playing = false, timers = [];
+function stopLullaby() {
+  timers.forEach(clearTimeout); timers = []; playing = false;
+}
 function playLullaby(step = 450, mel = MELODY) {
   if (playing) return;
+  if (muted) toast("Sound is off. Tap the Sound button to hear the music box.");
   playing = true;
-  mel.forEach((n, i) => setTimeout(() => { tone(NOTES[n], 0, 1.4); flash(n); }, i * step));
-  setTimeout(() => (playing = false), mel.length * step + 300);
+  timers = mel.map((n, i) => setTimeout(() => { tone(NOTES[n], 0, 1.4); flash(n); }, i * step));
+  timers.push(setTimeout(() => (playing = false), mel.length * step + 300));
 }
 $("playBtn").addEventListener("click", () => playLullaby());
 $("playBtn2").addEventListener("click", () => playLullaby(380, RAIN));
+$("stopBtn").addEventListener("click", stopLullaby);
 
 /* ---------- Nightlight lamps ---------- */
 document.querySelectorAll(".lamp").forEach((l, i) =>
@@ -101,6 +118,8 @@ document.querySelectorAll(".lamp").forEach((l, i) =>
     const on = l.getAttribute("aria-pressed") !== "true";
     l.setAttribute("aria-pressed", String(on));
     if (on) tone(NOTES[i + 1], 0, 0.8);
+    const lantern = $("lantern");
+    if (lantern) lantern.classList.toggle("lit", [...document.querySelectorAll(".lamp")].some((x) => x.getAttribute("aria-pressed") === "true"));
   })
 );
 

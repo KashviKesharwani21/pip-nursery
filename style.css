@@ -128,3 +128,15 @@ h2{text-decoration:underline wavy var(--accent) 2px;text-underline-offset:10px}
 
 @media(max-width:600px){.scene,.scene:nth-of-type(even){margin-left:0;padding:1.3rem 1.4rem}.pip{border-radius:110px 110px 30px 30px}}
 @media(prefers-reduced-motion:reduce){.new{animation:none}}
+
+/* ---- v6: animated Lullaby Lab + lantern ---- */
+.mbox-wrap{position:relative;display:flex;justify-content:center;margin:.6rem 0 1rem}
+.mbox{width:min(220px,80%);height:auto;border-radius:20px}
+.mbox.bump{animation:bump .35s}
+@keyframes bump{30%{transform:scale(1.05) rotate(-2deg);filter:drop-shadow(0 0 18px var(--glow))}70%{transform:scale(1.03) rotate(2deg)}}
+.fnote{position:absolute;bottom:40%;font-size:1.4rem;color:var(--glow);text-shadow:0 0 6px var(--glow);pointer-events:none;animation:floatup 1.4s ease-out forwards}
+@keyframes floatup{to{transform:translateY(-90px) rotate(15deg);opacity:0}}
+#stopBtn{background:#5c4033}
+.lantern{display:block;margin:0 auto .8rem;width:min(150px,60%);height:auto;filter:brightness(.85);transition:filter .4s}
+.lantern.lit{filter:drop-shadow(0 0 18px var(--glow)) brightness(1.1)}
+@media(prefers-reduced-motion:reduce){.mbox.bump{animation:none}.fnote{display:none}}

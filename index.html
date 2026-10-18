@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body data-mood="day">
   <header class="bar">
@@ -48,15 +48,18 @@
           <span class="new" aria-hidden="true">NEW!</span>
           <h3>The Lullaby Lab</h3>
           <p>My music box has five notes and zero rules. Tap the stars, or let me play one for you.</p>
+          <div class="mbox-wrap" id="mboxWrap"><img id="mbox" class="mbox" src="assets/pip_lullaby_box.png" alt="Pip’s pastel music box with a golden winding key" onerror="this.remove()"></div>
           <div class="keys" id="keys"></div>
           <div class="btnrow">
             <button type="button" id="playBtn">Pip’s lullaby</button>
             <button type="button" id="playBtn2">Rainy-night tune</button>
+            <button type="button" id="stopBtn">Stop</button>
           </div>
         </article>
         <article>
           <h3>Nightlight Collection</h3>
           <p>Wobbles tested every one of these. Tap a lamp to light it.</p>
+          <img id="lantern" class="lantern" src="assets/pip_dream_lantern.png" alt="" onerror="this.remove()">
           <div class="lamps">
             <button type="button" class="lamp" aria-pressed="false">🌙<span>Crescent lamp</span></button>
             <button type="button" class="lamp" aria-pressed="false">⭐<span>Star jar</span></button>
@@ -99,8 +102,8 @@
   <div class="wave" aria-hidden="true"></div>
   <footer>
     <div class="badges"><span class="badge">Made with ♡ at haX.baby</span><span class="badge b2">Mute button included</span><span class="badge b3">Best viewed on any screen</span></div>
-    <p>Credits: Pip art by haX.baby. Fonts: Fredoka and Fraunces (Google Fonts). Music box sounds made with the Web Audio API. Code and writing built with help from Claude (AI).</p>
+    <p>Credits: Pip art, music box and lantern images from the official haX.baby Pip asset pack. Fonts: Fredoka and Fraunces (Google Fonts). Music box sounds made with the Web Audio API. Code and writing built with help from Claude (AI).</p>
   </footer>
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
