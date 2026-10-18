@@ -132,3 +132,21 @@ function starBurst(x, y) {
 
 /* ---------- Click on Pip = giggle chime ---------- */
 $("pip").addEventListener("click", () => chime(540 + Math.random() * 400));
+
+/* ---------- Dreams delivered odometer (remembers visits in this browser) ---------- */
+(function () {
+  const BASE = 1204;
+  let visits = 0;
+  try {
+    visits = (parseInt(localStorage.getItem("pipVisits"), 10) || 0) + 1;
+    localStorage.setItem("pipVisits", String(visits));
+  } catch (e) {}
+  const target = BASE + visits, odo = $("odo");
+  function draw(n) {
+    odo.innerHTML = String(n).padStart(6, "0").split("").map((d) => `<b>${d}</b>`).join("");
+  }
+  if (reduce) return draw(target);
+  let n = target - 25;
+  draw(n);
+  const t = setInterval(() => { draw(++n); if (n >= target) clearInterval(t); }, 40);
+})();
