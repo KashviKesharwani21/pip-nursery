@@ -1,0 +1,34 @@
+:root{
+  --bg:#fff8f1; --ink:#5c4033; --accent:#a34063; --card:#fff; --glow:#ffc46b;
+  --serif:"Fraunces",Georgia,serif; --round:"Fredoka",system-ui,sans-serif;
+}
+[data-mood="night"]{ --bg:#1e1530; --ink:#f3e6ff; --accent:#ff9fc2; --card:#2c2145; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.1rem/1.6 var(--round);transition:background .6s,color .6s}
+h1,h2,h3{font-family:var(--serif);line-height:1.1;margin:0 0 .5em}
+h1{font-size:clamp(2.6rem,9vw,5rem);color:var(--accent)}
+h2{font-size:clamp(1.8rem,5vw,2.6rem)}
+.bar{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:space-between;align-items:center;padding:.8rem 1rem;position:sticky;top:0;background:var(--bg);z-index:5}
+.logo{font-family:var(--serif);font-weight:600}
+.controls{display:flex;gap:.5rem}
+button{font:600 1rem var(--round);color:#fff;background:var(--accent);border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer}
+button:focus-visible{outline:3px solid var(--glow);outline-offset:2px}
+section{max-width:960px;margin:0 auto;padding:3rem 1.2rem}
+.hero{display:grid;gap:2rem;align-items:center;grid-template-columns:1fr}
+@media(min-width:760px){.hero{grid-template-columns:minmax(260px,380px) 1fr}}
+.tag{font-family:var(--serif);font-size:1.3rem}
+.pip{position:relative;width:100%;max-width:380px;margin:auto;border-radius:24px;overflow:hidden}
+.pip img{display:block;width:100%;height:auto}
+[data-mood="night"] .pip img{filter:brightness(.6) saturate(.9)}
+/* Eye overlays sit on Pip's sockets. Tweak left/top/width/height if they look off. */
+.eye{position:absolute;width:14.5%;height:9.2%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(#3a2620,#1c100d);overflow:hidden}
+#eyeL{left:39.9%;top:42.2%} #eyeR{left:66.3%;top:37.4%}
+.eye i{position:absolute;left:50%;top:50%;width:14%;aspect-ratio:1;border-radius:50%;background:#ffd98a;box-shadow:0 0 8px 3px var(--glow);transform:translate(-50%,-50%)}
+[data-mood="night"] .eye i{width:22%;box-shadow:0 0 14px 6px var(--glow)}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+article{background:var(--card);border-radius:20px;padding:1.2rem;box-shadow:0 4px 0 var(--accent)}
+.scene{padding:2.5rem 0;border-top:2px dashed var(--accent)}
+footer{padding:2rem 1.2rem;text-align:center;font-size:.9rem}
+.spark{position:fixed;pointer-events:none;z-index:9;font-size:16px;color:var(--glow);animation:fall .8s forwards}
+@keyframes fall{to{transform:translateY(24px) scale(.3);opacity:0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.spark{display:none}}
