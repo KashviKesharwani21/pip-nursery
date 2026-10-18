@@ -140,3 +140,8 @@ h2{text-decoration:underline wavy var(--accent) 2px;text-underline-offset:10px}
 .lantern{display:block;margin:0 auto .8rem;width:min(150px,60%);height:auto;filter:brightness(.85);transition:filter .4s}
 .lantern.lit{filter:drop-shadow(0 0 18px var(--glow)) brightness(1.1)}
 @media(prefers-reduced-motion:reduce){.mbox.bump{animation:none}.fnote{display:none}}
+
+/* ---- v7: frame the studio-render images like Pip's arch ---- */
+.lantern,.mbox{aspect-ratio:1/1;object-fit:cover;border:3px solid var(--ink-line);border-radius:999px 999px 26px 26px;box-shadow:5px 5px 0 var(--accent)}
+.lantern{width:min(170px,70%)}
+.lantern.lit{filter:brightness(1.08);box-shadow:0 0 26px 8px var(--glow),5px 5px 0 var(--accent)}
