@@ -49,9 +49,8 @@ footer{padding:2rem 1.2rem;text-align:center;font-size:.9rem}
 .pom{position:absolute;left:11.4%;top:36.9%;width:13%;aspect-ratio:1;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent;padding:0;cursor:pointer}
 .zzz{position:absolute;right:10%;top:6%;font:600 1.8rem var(--serif);color:var(--glow);opacity:0;pointer-events:none}
 .asleep .zzz{opacity:1;animation:bob 2s infinite alternate}
-.asleep .eye{background:#efe0cc}
-.asleep .eye i{display:none}
-.asleep .eye::after{content:"";position:absolute;left:18%;right:18%;top:30%;height:38%;border-bottom:3px solid #5c4033;border-radius:0 0 50% 50%}
+.asleep .eye i{opacity:0}
+.asleep .eye::after{content:"";position:absolute;left:24%;right:24%;top:26%;height:34%;border-bottom:4px solid var(--glow);border-radius:0 0 60% 60%;filter:drop-shadow(0 0 4px var(--glow));opacity:.9}
 @keyframes bob{to{transform:translateY(-10px)}}
 .star{position:fixed;z-index:9;pointer-events:none;font-size:22px;color:var(--glow);animation:burst 1s ease-out forwards}
 @keyframes burst{to{transform:translate(var(--dx),var(--dy)) rotate(200deg);opacity:0}}
