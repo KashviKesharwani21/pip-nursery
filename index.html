@@ -23,6 +23,8 @@
     <section class="hero">
       <div class="pip" id="pip" role="img" aria-label="Pip, a sleepy skull baby in a starry nightcap, holding a lantern and a music box">
         <img src="assets/pip.jpg" alt="" width="682" height="1024">
+        <button type="button" class="pom" id="pom" aria-label="Pip’s pom-pom"></button>
+        <span class="zzz" aria-hidden="true">z z z</span>
         <span class="eye" id="eyeL"><i></i></span>
         <span class="eye" id="eyeR"><i></i></span>
       </div>
@@ -36,17 +38,39 @@
     <section id="work">
       <h2>What I make</h2>
       <div class="grid">
-        <article><h3>The Lullaby Lab</h3><p>TODO: music box goes here.</p></article>
-        <article><h3>Nightlight Collection</h3><p>TODO: glowing lamps go here.</p></article>
-        <article><h3>Pip’s Growth Chart</h3><p>TODO: skills on a nursery wall.</p></article>
+        <article>
+          <h3>The Lullaby Lab</h3>
+          <p>A music box I wound up myself. Tap the stars to play, or let me play a lullaby.</p>
+          <div class="keys" id="keys"></div>
+          <button type="button" id="playBtn">Play Pip’s lullaby</button>
+        </article>
+        <article>
+          <h3>Nightlight Collection</h3>
+          <p>Tap a lamp to light it. Try them all.</p>
+          <div class="lamps">
+            <button type="button" class="lamp" aria-pressed="false">🌙<span>Crescent lamp</span></button>
+            <button type="button" class="lamp" aria-pressed="false">⭐<span>Star jar</span></button>
+            <button type="button" class="lamp" aria-pressed="false">☁️<span>Cloud glow</span></button>
+          </div>
+        </article>
+        <article>
+          <h3>Pip’s Growth Chart</h3>
+          <p>How tall my skills have grown on the nursery wall.</p>
+          <ul class="measure">
+            <li style="--w:90%"><b>Lullabies</b></li>
+            <li style="--w:75%"><b>Nightlights</b></li>
+            <li style="--w:100%"><b>Giggling</b></li>
+            <li style="--w:20%"><b>Not tripping</b></li>
+          </ul>
+        </article>
       </div>
     </section>
 
     <section id="story">
       <h2>How I got here</h2>
-      <div class="scene"><p>TODO: scene one, under 150 words.</p></div>
-      <div class="scene"><p>TODO: scene two.</p></div>
-      <div class="scene"><p>TODO: scene three.</p></div>
+      <div class="scene"><h3>The quiet</h3><p>Before the Midnight Nursery, there was one quiet hill and one very small skull baby who hated silence. Pip couldn’t sleep. Neither could the little ghosts down the lane.</p></div>
+      <div class="scene"><h3>The first lullaby</h3><p>In an attic, Pip found a dusty music box with one key and five notes. Pip wound it up. Every little ghost on the street yawned at the same time.</p></div>
+      <div class="scene"><h3>The job</h3><p>The Midnight Nursery hired Pip on the spot. Now Pip builds dreams after dark: lullabies, nightlights, and bedtime tales. Still a little clumsy. Still giggling.</p></div>
     </section>
   </main>
 

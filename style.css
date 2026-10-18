@@ -32,3 +32,27 @@ footer{padding:2rem 1.2rem;text-align:center;font-size:.9rem}
 .spark{position:fixed;pointer-events:none;z-index:9;font-size:16px;color:var(--glow);animation:fall .8s forwards}
 @keyframes fall{to{transform:translateY(24px) scale(.3);opacity:0}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}.spark{display:none}}
+
+/* ---- v2 ---- */
+.keys{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+.key{width:48px;height:48px;padding:0;font-size:1.4rem;background:var(--card);color:var(--accent);border:2px solid var(--accent);transition:transform .15s}
+.key.lit{background:var(--glow);color:#5c4033;transform:scale(1.15)}
+.lamps{display:flex;gap:.6rem;flex-wrap:wrap}
+.lamp{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-size:2rem;background:var(--card);color:var(--ink);border:2px solid var(--accent);border-radius:18px;padding:.6rem .8rem}
+.lamp span{font-size:.8rem}
+.lamp[aria-pressed="true"]{background:var(--glow);color:#5c4033;box-shadow:0 0 22px 6px var(--glow)}
+.measure{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.measure li{background:rgba(163,64,99,.15);border-radius:999px;overflow:hidden}
+.measure li b{display:block;width:var(--w);background:var(--accent);color:#fff;font-weight:600;padding:.15rem .8rem;border-radius:999px;white-space:nowrap;font-size:.95rem}
+.scene{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.scene.in{opacity:1;transform:none}
+.pom{position:absolute;left:11.4%;top:36.9%;width:13%;aspect-ratio:1;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent;padding:0;cursor:pointer}
+.zzz{position:absolute;right:10%;top:6%;font:600 1.8rem var(--serif);color:var(--glow);opacity:0;pointer-events:none}
+.asleep .zzz{opacity:1;animation:bob 2s infinite alternate}
+.asleep .eye{background:#efe0cc}
+.asleep .eye i{display:none}
+.asleep .eye::after{content:"";position:absolute;left:18%;right:18%;top:30%;height:38%;border-bottom:3px solid #5c4033;border-radius:0 0 50% 50%}
+@keyframes bob{to{transform:translateY(-10px)}}
+.star{position:fixed;z-index:9;pointer-events:none;font-size:22px;color:var(--glow);animation:burst 1s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--dx),var(--dy)) rotate(200deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.scene{opacity:1;transform:none}.star,.zzz{animation:none}}
