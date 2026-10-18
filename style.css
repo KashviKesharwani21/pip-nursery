@@ -65,11 +65,10 @@ footer{padding:2rem 1.2rem;text-align:center;font-size:.9rem}
 .odo{display:inline-flex;gap:3px;vertical-align:middle}
 .odo b{display:inline-block;min-width:1.5ch;padding:.1rem .35rem;text-align:center;font:600 1.2rem/1.2 monospace;color:var(--glow);background:#2b1b17;border:2px inset #6b4a3a;border-radius:4px}
 .badges{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:1rem}
-.badge{padding:.35rem .7rem;font-size:.8rem;font-weight:600;color:#fff;background:var(--accent);border:2px outset #d98aa8;transform:rotate(-2deg)}
-.badge.b2{background:#5c4033;border-color:#9a7a68;transform:rotate(1.5deg)}
-.badge.b3{background:#6b5bb0;border-color:#a99be0;transform:rotate(-1deg)}
-@media(max-width:600px){.badges{flex-direction:column;align-items:center}.badge{transform:none}.marquee .track{animation-duration:26s}}
-@media(prefers-reduced-motion:reduce){.marquee .track{animation:none}}
+.badge{display:flex;align-items:center;justify-content:center;width:176px;height:44px;padding:0 .6rem;text-align:center;font-size:.8rem;font-weight:600;line-height:1.1;color:#fff;background:var(--accent);border:2px outset #d98aa8}
+.badge.b2{background:#5c4033;border-color:#9a7a68}
+.badge.b3{background:#6b5bb0;border-color:#a99be0}
+@media(max-width:600px){.badges{flex-direction:column;align-items:center}}
 
 /* ---- v4 ---- */
 .row{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -80,8 +79,8 @@ footer{padding:2rem 1.2rem;text-align:center;font-size:.9rem}
 .bubble.show{opacity:1}
 
 /* ---- v4: Wobbles, moon egg, toast ---- */
-#playBtn2{margin-left:.4rem;background:#6b5bb0}
-article > button + button{margin-top:.4rem}
+#playBtn2{background:#6b5bb0}
+.btnrow{display:flex;flex-wrap:wrap;gap:.5rem}
 .moonbtn{position:absolute;left:83%;top:16.6%;width:18%;aspect-ratio:1;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent;padding:0;cursor:pointer}
 .wobbles{display:flex;align-items:center;gap:.8rem;font-size:3rem;color:var(--ink);background:var(--card);border:2px dashed var(--accent);border-radius:24px;padding:.6rem 1rem}
 .wobbles span{font:400 1.1rem var(--round);text-align:left}
