@@ -210,10 +210,10 @@ $("pip").addEventListener("click", () => chime(540 + Math.random() * 400));
   const done = $("routeDone"), cloud = $("cloud"), section = $("route");
   const NS = "http://www.w3.org/2000/svg";
   const STOPS = [
-    { at: 0.04, name: "Nursery Row", dream: "floating in a bath of warm milk" },
-    { at: 0.34, name: "Wobbles’ Attic", dream: "a world where every lamp stays on" },
-    { at: 0.66, name: "Moonlight Bakery", dream: "very quiet cupcakes" },
-    { at: 0.97, name: "Sleepy Lighthouse", dream: "a boat that hums along" },
+    { at: 0.04, name: "Nursery Row", text: "Step 1, Nursery Row: Pip collects tonight’s wishes, one sleepy yawn at a time." },
+    { at: 0.34, name: "Wobbles’ Attic", text: "Step 2, Wobbles’ Attic: Wobbles adds his input. One worry, one giggle, and a lamp left on." },
+    { at: 0.66, name: "Dream Oven", text: "Step 3, Dream Oven: the dream bakes until it’s warm, fluffy and a little bit glowy." },
+    { at: 0.97, name: "Your Pillow", text: "Step 4, Your Pillow: the dream is delivered. Sweet dreams!" },
   ];
   const len = base.getTotalLength();
   done.style.strokeDasharray = len;
@@ -240,8 +240,8 @@ $("pip").addEventListener("click", () => chime(540 + Math.random() * 400));
     if (idx !== current) {
       current = idx;
       $("routeCaption").textContent = idx < 0
-        ? "Waiting at the nursery door…"
-        : `Delivered to ${STOPS[idx].name}: a dream about ${STOPS[idx].dream}.`;
+        ? "Tonight’s dream is waiting at the nursery door…"
+        : STOPS[idx].text;
       if (sound && idx >= 0) chime(500 + idx * 110);
     }
   }
