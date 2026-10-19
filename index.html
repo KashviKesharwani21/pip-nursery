@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body data-mood="day">
   <header class="bar">
@@ -81,6 +81,32 @@
 
     <div class="wave" aria-hidden="true"></div>
 
+    <section id="route">
+      <h2>Dream Delivery Routes</h2>
+      <p>Scroll and watch me carry tonight’s dreams across the rooftops. Or press the button and I’ll fly it for you.</p>
+      <div class="routebox" id="routebox">
+        <svg viewBox="0 0 700 360" role="img" aria-label="A winding rooftop route with four stops that Pip’s cloud follows">
+          <path id="routeBase" class="r-base" d="M50 300 C 140 310, 160 130, 270 160 S 390 300, 470 230 S 580 70, 640 100"/>
+          <path id="routeDone" class="r-done" d="M50 300 C 140 310, 160 130, 270 160 S 390 300, 470 230 S 580 70, 640 100"/>
+          <g id="stopDots"></g>
+          <g id="cloud">
+            <g transform="translate(-38 -34)">
+              <circle cx="18" cy="38" r="14" fill="#fff"/><circle cx="38" cy="28" r="19" fill="#fff"/><circle cx="60" cy="38" r="14" fill="#fff"/><rect x="18" y="38" width="42" height="14" fill="#fff"/>
+              <path d="M24 14 Q34 -4 50 -10 Q48 6 56 14 Z" fill="#f4c2d4"/><circle cx="50" cy="-10" r="4.5" fill="#fff"/>
+              <ellipse cx="30" cy="34" rx="6" ry="7" fill="#2b1b17"/><circle cx="31.5" cy="32.5" r="2" fill="#ffd98a"/>
+              <ellipse cx="48" cy="34" rx="6" ry="7" fill="#2b1b17"/><circle cx="49.5" cy="32.5" r="2" fill="#ffd98a"/>
+              <path d="M35 45 q4 4 8 0" fill="none" stroke="#5c4033" stroke-width="2.4" stroke-linecap="round"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <p class="caption" id="routeCaption">Waiting at the nursery door…</p>
+      <ol class="stops" id="stopList"></ol>
+      <button type="button" id="flyBtn">Fly the route</button>
+    </section>
+
+    <div class="wave" aria-hidden="true"></div>
+
     <section id="story">
       <h2>How I got here</h2>
       <div class="scene"><h3>The quiet</h3><p>The nursery used to be so quiet. Ugh. Pip lay awake listening to nothing, and nothing is LOUD. Down the lane, Wobbles the ghost couldn’t sleep either, because Wobbles is scared of the dark. Yes, a ghost. We don’t talk about it.</p></div>
@@ -104,6 +130,6 @@
     <div class="badges"><span class="badge">Made with ♡ at haX.baby</span><span class="badge b2">Mute button included</span><span class="badge b3">Best viewed on any screen</span></div>
     <p>Credits: Pip art, music box and lantern images from the official haX.baby Pip asset pack. Fonts: Fredoka and Fraunces (Google Fonts). Music box sounds made with the Web Audio API. Code and writing built with help from Claude (AI).</p>
   </footer>
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

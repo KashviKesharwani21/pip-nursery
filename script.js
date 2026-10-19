@@ -202,3 +202,77 @@ $("pip").addEventListener("click", () => chime(540 + Math.random() * 400));
   draw(n);
   const t = setInterval(() => { draw(++n); if (n >= target) clearInterval(t); }, 40);
 })();
+
+/* ---------- Dream Delivery Route (scroll-driven + "Fly" button) ---------- */
+(function () {
+  const base = $("routeBase");
+  if (!base) return;
+  const done = $("routeDone"), cloud = $("cloud"), section = $("route");
+  const NS = "http://www.w3.org/2000/svg";
+  const STOPS = [
+    { at: 0.04, name: "Nursery Row", dream: "floating in a bath of warm milk" },
+    { at: 0.34, name: "Wobbles’ Attic", dream: "a world where every lamp stays on" },
+    { at: 0.66, name: "Moonlight Bakery", dream: "very quiet cupcakes" },
+    { at: 0.97, name: "Sleepy Lighthouse", dream: "a boat that hums along" },
+  ];
+  const len = base.getTotalLength();
+  done.style.strokeDasharray = len;
+  STOPS.forEach((s) => {
+    const p = base.getPointAtLength(len * s.at);
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", p.x); c.setAttribute("cy", p.y); c.setAttribute("r", 13);
+    c.setAttribute("class", "r-stop");
+    $("stopDots").appendChild(c); s.dot = c;
+    const li = document.createElement("li");
+    li.textContent = s.name; $("stopList").appendChild(li); s.li = li;
+  });
+  let current = -1, flying = false;
+  function setProgress(p, sound) {
+    const pt = base.getPointAtLength(len * p);
+    cloud.setAttribute("transform", `translate(${pt.x} ${pt.y})`);
+    done.style.strokeDashoffset = len * (1 - p);
+    let idx = -1;
+    STOPS.forEach((s, i) => {
+      const on = p >= s.at - 0.01;
+      s.dot.classList.toggle("on", on); s.li.classList.toggle("done", on);
+      if (on) idx = i;
+    });
+    if (idx !== current) {
+      current = idx;
+      $("routeCaption").textContent = idx < 0
+        ? "Waiting at the nursery door…"
+        : `Delivered to ${STOPS[idx].name}: a dream about ${STOPS[idx].dream}.`;
+      if (sound && idx >= 0) chime(500 + idx * 110);
+    }
+  }
+  function fromScroll() {
+    if (flying) return;
+    const r = section.getBoundingClientRect();
+    setProgress(Math.max(0, Math.min(1, (innerHeight * 0.9 - r.top) / (r.height * 0.9))), false);
+  }
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { fromScroll(); ticking = false; });
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll);
+  fromScroll();
+
+  $("flyBtn").addEventListener("click", (e) => {
+    const btn = e.currentTarget;
+    if (flying) return;
+    if (reduce) { setProgress(1, false); return; }
+    flying = true; btn.disabled = true; btn.textContent = "Flying…";
+    if (muted) toast("Sound is off. The route will fly silently.");
+    setProgress(0, false);
+    const t0 = performance.now(), D = 7000;
+    (function step(now) {
+      const p = Math.min(1, (now - t0) / D);
+      setProgress(p, true);
+      if (p < 1) return requestAnimationFrame(step);
+      flying = false; btn.disabled = false; btn.textContent = "Fly the route again";
+    })(t0);
+  });
+})();

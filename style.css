@@ -145,3 +145,18 @@ h2{text-decoration:underline wavy var(--accent) 2px;text-underline-offset:10px}
 .lantern,.mbox{aspect-ratio:1/1;object-fit:cover;border:3px solid var(--ink-line);border-radius:999px 999px 26px 26px;box-shadow:5px 5px 0 var(--accent)}
 .lantern{width:min(170px,70%)}
 .lantern.lit{filter:brightness(1.08);box-shadow:0 0 26px 8px var(--glow),5px 5px 0 var(--accent)}
+
+/* ---- v8: Dream Delivery Route ---- */
+.routebox{background:var(--card);border:3px solid var(--ink-line);border-radius:44px 52px 40px 56px/52px 40px 56px 44px;box-shadow:6px 6px 0 var(--accent);padding:.5rem;margin:1rem 0}
+.routebox svg{display:block;width:100%;height:auto}
+.r-base{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;stroke-dasharray:2 12;opacity:.55}
+.r-done{fill:none;stroke:var(--glow);stroke-width:6;stroke-linecap:round}
+.r-stop{fill:var(--card);stroke:var(--ink-line);stroke-width:3;transition:fill .3s}
+.r-stop.on{fill:var(--glow)}
+#cloud{filter:drop-shadow(2px 3px 0 rgba(92,64,51,.4))}
+.caption{font-weight:600;color:var(--accent);min-height:3.2em}
+.stops{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin:.5rem 0 1rem}
+.stops li{padding:.25rem .8rem;border:2px dashed var(--accent);border-radius:999px;font-size:.9rem;opacity:.6}
+.stops li.done{opacity:1;background:var(--glow);color:#5c4033;border-style:solid}
+#flyBtn{border:3px solid var(--ink-line);box-shadow:3px 3px 0 var(--ink-line)}
+#flyBtn:disabled{opacity:.6;cursor:default}
